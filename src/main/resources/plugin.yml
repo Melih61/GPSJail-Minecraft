@@ -1,0 +1,4 @@
+name: GPSJail
+version: '5.0'
+main: de.maleh.gpsjail.Main
+api-version: 1.20
