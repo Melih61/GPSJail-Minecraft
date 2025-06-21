@@ -15,7 +15,11 @@ public class UnbanCommand extends AbstractCommand {
 
     @Override
     public String getHelpMessage() {
-        return "unban (Spieler)";
+        return "unban <Player>";
+    }
+
+    public String getDescription() {
+        return "Unban a player";
     }
 
     @Override
@@ -24,7 +28,7 @@ public class UnbanCommand extends AbstractCommand {
             OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
             if(target.isBanned()) {
                 Bukkit.getBanList(BanList.Type.NAME).pardon(target.getName());
-                MessagesUtils.form(p, "Du hast den Spieler " + target.getName() + " entbannt");
+                MessagesUtils.form(p, "You unbanned §6" + target.getName());
             }
         });
     }

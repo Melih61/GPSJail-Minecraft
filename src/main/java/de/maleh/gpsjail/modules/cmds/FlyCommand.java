@@ -1,6 +1,7 @@
 package de.maleh.gpsjail.modules.cmds;
 
 import de.maleh.gpsjail.MessagesUtils;
+import de.maleh.gpsjail.Utils;
 import org.bukkit.Bukkit;
 
 import de.maleh.gpsjail.commands.AbstractCommand;
@@ -14,7 +15,11 @@ public class FlyCommand extends AbstractCommand{
 
     @Override
     public String getHelpMessage() {
-        return "fly (Spieler)";
+        return "fly <Player>";
+    }
+
+    public String getDescription() {
+        return "Activate or disable fly";
     }
 
     @Override
@@ -23,26 +28,26 @@ public class FlyCommand extends AbstractCommand{
             if(p.getAllowFlight() == false){
                 p.setAllowFlight(true);
                 p.setFlying(true);
-                MessagesUtils.form(p, "Du kannst nun fliegen");
+                MessagesUtils.form(p, "You can fly now");
             } else {
                 p.setAllowFlight(false);
                 p.setFlying(false);
-                MessagesUtils.form(p, "Du kannst nicht mehr fliegen");
+                MessagesUtils.form(p, "You can't fly anymore");
             }
         });
         super.registerParameter(1, (p,args)->{
-            Player target = Bukkit.getPlayer(args[1]);
-            if(target==null){
-                MessagesUtils.form(p, "§cDer Spieler " + args[1] + " ist nicht online");
+            Player target = Utils.checkOffline(p, args[1]);
+            if (target == null) {
+                return;
             } else {
                 if (target.getAllowFlight() == false) {
                     target.setAllowFlight(true);
                     target.setFlying(true);
-                    MessagesUtils.form(p, "Der Spieler " +target.getName()+ " kann nun fliegen");
+                    MessagesUtils.form(p, "The player §6" + target.getName() + "§7 can fly now");
                 } else {
                     target.setAllowFlight(false);
                     target.setFlying(false);
-                    MessagesUtils.form(p, "Der Spieler " + target.getName()+ " kann nicht mehr fliegen");
+                    MessagesUtils.form(p, "The player §6" + target.getName() + "§7can't fly anymore");
                 }
             }
         });

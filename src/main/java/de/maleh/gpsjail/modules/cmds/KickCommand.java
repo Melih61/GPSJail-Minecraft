@@ -1,6 +1,7 @@
 package de.maleh.gpsjail.modules.cmds;
 
 import de.maleh.gpsjail.MessagesUtils;
+import de.maleh.gpsjail.Utils;
 import de.maleh.gpsjail.commands.Executor;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
@@ -17,11 +18,24 @@ public class KickCommand extends AbstractCommand{
 
     @Override
     public String getHelpMessage() {
-        return "kick (Spieler) (Grund)";
+        return "kick <Player> <Reason>";
+    }
+
+    public String getDescription() {
+        return "Kick a player";
     }
 
     @Override
     public void setupCommand() {
+        super.registerParameter(1, (p,args)->{
+            Player target = Utils.checkOffline(p, args[1]);
+            if(target == null) {
+                return;
+            } else {
+                target.kickPlayer("java.net.ConnectException: Connection timed out: no further information:");
+                MessagesUtils.form(p, "You kicked §6" + target.getName());
+            }
+        });
         Executor exe = (p, args) -> {
             StringBuilder builder = new StringBuilder();
 
@@ -32,14 +46,15 @@ public class KickCommand extends AbstractCommand{
                     builder.append(args[i] + " ");
                 }
             }
-            Player target = Bukkit.getPlayer(args[1]);
-            if (builder.toString() == "") {
-                if (target == null) {
-                    MessagesUtils.form(p, "Der Spieler "+args[1]+" ist nicht online");
-                } else {
-                    MessagesUtils.form(p, "Du hast den Spieler " + target.getName() + " gekickt");
-                    target.kickPlayer("java.net.ConnectException: Connection timed out: no further information:");
-                }
+            Player target = Utils.checkOffline(p, args[1]);
+            if (target == null) {
+                return;
+            } else if (builder.toString() == "") {
+                MessagesUtils.form(p, "You kicked §6" + target.getName());
+                target.kickPlayer("java.net.ConnectException: Connection timed out: no further information:");
+            } else {
+                MessagesUtils.form(p, "You kicked §6" + target.getName());
+                target.kickPlayer(builder.toString());
             }
         };
 

@@ -1,6 +1,7 @@
 package de.maleh.gpsjail.modules.cmds;
 
 import de.maleh.gpsjail.MessagesUtils;
+import de.maleh.gpsjail.Utils;
 import de.maleh.gpsjail.commands.AbstractCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -13,23 +14,28 @@ public class HealCommand extends AbstractCommand {
 
     @Override
     public String getHelpMessage() {
-        return "heal (Spieler)";
+        return "heal <Player>";
+    }
+
+    public String getDescription() {
+        return "Heal a player";
     }
 
     @Override
     public void setupCommand() {
         super.registerParameter(0, (p,args)->{
             double maxhealth = p.getMaxHealth();
-            MessagesUtils.form(p, "Du wurdest geheilt");
+            p.setHealth(maxhealth);
+            MessagesUtils.form(p, "You got healed");
         });
         super.registerParameter(1, (p,args)->{
-            Player target = Bukkit.getPlayer(args[1]);
-            if(target==null){
-                MessagesUtils.form(p, "§cDer Spieler " + args[1] + " ist nicht online");
+            Player target = Utils.checkOffline(p, args[1]);
+            if (target == null) {
+                return;
             } else {
                 double maxhealth = target.getMaxHealth();
                 target.setHealth(maxhealth);
-                MessagesUtils.form(p, "Du hast " + target.getName() + " geheilt");
+                MessagesUtils.form(p, "You healed §6" + target.getName());
             }
         });
     }

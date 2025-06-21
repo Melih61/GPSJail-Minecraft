@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gpsjail.iml" filepath="$PROJECT_DIR$/gpsjail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GPSJail.iml" filepath="$PROJECT_DIR$/GPSJail.iml" />
     </modules>
   </component>
 </project>

@@ -9,7 +9,7 @@ public class Utils {
 		Player target = Bukkit.getPlayer(name);
 		
 		if(target == null) {
-			MessagesUtils.form(p, "Der angegebene Spieler ist §coffline§7!");
+			MessagesUtils.form(p, "§cThe player " + name + " was not found");
 			return null;
 		}
 		return target;

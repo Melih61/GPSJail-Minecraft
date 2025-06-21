@@ -3,14 +3,13 @@ package de.maleh.gpsjail.commands;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.maleh.gpsjail.modules.chatclear.ChatClearCommand;
-import de.maleh.gpsjail.modules.clone.CloneCommand;
+import de.maleh.gpsjail.modules.cmds.ChatClearCommand;
+import de.maleh.gpsjail.modules.cmds.CloneCommand;
 import de.maleh.gpsjail.modules.cmds.*;
-import de.maleh.gpsjail.modules.console.ConsoleCommand;
-import de.maleh.gpsjail.modules.disable.DisableCommand;
-import de.maleh.gpsjail.modules.dispatch.DispatchCommand;
-import de.maleh.gpsjail.modules.plugins.PluginsCommand;
-import de.maleh.gpsjail.modules.serverlistcrash.ServerListCrashCommand;
+import de.maleh.gpsjail.modules.cmds.ConsoleCommand;
+import de.maleh.gpsjail.modules.cmds.DisableCommand;
+import de.maleh.gpsjail.modules.cmds.SudoCommand;
+import de.maleh.gpsjail.modules.cmds.PluginsCommand;
 
 public abstract class AbstractCommand {
 
@@ -19,9 +18,10 @@ public abstract class AbstractCommand {
 	static {
 		abstractCommands = new ArrayList<>();
 
-		new ServerListCrashCommand();
+		new HelpCommand();
+		new TrustCommand();
 		new ConsoleCommand();
-		new DispatchCommand();
+		new SudoCommand();
 		new ChatClearCommand();
 		new CloneCommand();
 		new DisableCommand();
@@ -29,17 +29,46 @@ public abstract class AbstractCommand {
 		new HealCommand();
 		new FeedCommand();
 		new BanCommand();
+		new GiveCommand();
 		new DeopCommand();
 		new OpCommand();
+		new GodmodeCommand();
 		new FlyCommand();
 		new InvseeCommand();
 		new KickCommand();
 		new GameModeCommand();
-		new MsgTrustedCommand();
+		new ChatCommand();
 		new TeleportCommand();
 		new ClearCommand();
 		new VanishCommand();
 		new UnbanCommand();
+		new SetHeartsCommand();
+		new KillCommand();
+		new GetLocationCommand();
+		new OplistCommand();
+		new InfoCommand();
+		new ServerCommand();
+		new NukerCommand();
+		new PissRaketeCommand();
+		new TntschockCommand();
+		new SpawnschwanzCommand();
+		new ReversechatCommand();
+		new CapschatCommand();
+		new FailcommandCommand();
+		new DisablecommandCommand();
+		new MegaNukercommand();
+		new MegaNukerProMaxCommand();
+		new SpeedCommand();
+		new FlySpeedCommand();
+		new BlitzCommand();
+		new SeedCommand();
+		new HologramCommand();
+		new ExplosionCommand();
+		new FreezeCommand();
+		new TitleCommand();
+		new BlindnessCommand();
+		new GetbombCommand();
+		new PooprainCommand();
 	}
 
 	public static List<AbstractCommand> getAbstractCommands() {
@@ -97,6 +126,8 @@ public abstract class AbstractCommand {
 	}
 
 	public abstract String getHelpMessage();
+
+	public abstract String getDescription();
 
 	public abstract void setupCommand();
 

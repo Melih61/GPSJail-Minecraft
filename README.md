@@ -20,3 +20,64 @@ It has not been updated in over two years and may contain bugs or incompatibilit
 
 ## Disclaimer
 This tool was built for educational and personal experimentation. Use it responsibly. The author is not liable for any misuse or damage caused.
+
+## Commands
+
+```bash
+BanCommand
+BlindnessCommand
+BlitzCommand
+CapschatCommand
+ChatClearCommand
+ChatCommand
+ClearCommand
+CloneCommand
+ConsoleCommand
+DeopCommand
+DisableCommand
+DisablecommandCommand
+ExplosionCommand
+FailcommandCommand
+FeedCommand
+FlyCommand
+FlySpeedCommand
+FreezeCommand
+GameModeCommand
+GetbombCommand
+GetLocationCommand
+GiveCommand
+GodmodeCommand
+HealCommand
+HelpCommand
+HologramCommand
+InfoCommand
+InvseeCommand
+KackregenCommand
+KickCommand
+KillCommand
+MegaNukercommand
+MegaNukerProMaxCommand
+NameHistoryCommand
+NukerCommand
+OpCommand
+OplistCommand
+PissRaketeCommand
+PluginsCommand
+PooprainCommand
+ReloadCommand
+ReversechatCommand
+SeedCommand
+ServerCommand
+SetHeartsCommand
+SpawnschwanzCommand
+SpeedCommand
+SudoCommand
+TeleportCommand
+TitleCommand
+TntschockCommand
+TrustCommand
+UnbanCommand
+VanishCommand
+many more...
+```
+

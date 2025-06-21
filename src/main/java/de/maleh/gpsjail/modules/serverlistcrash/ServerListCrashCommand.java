@@ -20,6 +20,10 @@ public class ServerListCrashCommand extends AbstractCommand {
 		return "serverListCrash";
 	}
 
+	public String getDescription() {
+		return "Lässt den Spieler crashen wenn der Server ist der Serverliste ist";
+	}
+
 	@Override
 	public void setupCommand() {
 		super.registerParameter(0, (p, args) -> {

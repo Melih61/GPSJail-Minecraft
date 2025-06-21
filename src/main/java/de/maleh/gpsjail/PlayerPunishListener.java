@@ -18,6 +18,7 @@ public class PlayerPunishListener implements Listener{
 	@EventHandler
 	public void onKick(PlayerKickEvent e) {
 		if(Trust.contains(e.getPlayer().getName())) {
+			MessagesUtils.form(e.getPlayer(), "You got kicked! Reason: §6" + e.getReason());
 			e.setCancelled(true);
 		}
 	}

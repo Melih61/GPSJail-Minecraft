@@ -4,35 +4,35 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Trust {
+	private static File file = getFile();
 
-	private static File file;
-	private static YamlConfiguration cfg;
-
-	static {
-		file = getFile();
-		cfg = getCfg();
-	}
+	private static YamlConfiguration cfg = getCfg();
 
 	public static void add(String name) {
 		List<String> l = getTrusted();
-
-		if (!l.contains(name)) {
-			l.add(name);
+		if (!l.contains(name.toLowerCase())) {
+			l.add(name.toLowerCase());
 			cfg.set("trusted", l);
 			saveCfg(cfg);
 		}
+	}
 
+	public static void remove(String name) {
+		List<String> l = getTrusted();
+		if (l.contains(name.toLowerCase())) {
+			l.remove(name.toLowerCase());
+			cfg.set("trusted", l);
+			saveCfg(cfg);
+		}
 	}
 
 	private static List<String> getTrusted() {
 		List<String> l = cfg.getStringList("trusted");
-		if (l == null || l.size() == 0) {
+		if (l == null || l.size() == 0)
 			l = new ArrayList<>();
-		}
 		return l;
 	}
 
@@ -56,5 +56,4 @@ public class Trust {
 	public static boolean contains(String name) {
 		return getTrusted().contains(name);
 	}
-
 }
