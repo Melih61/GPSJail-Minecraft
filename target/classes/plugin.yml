@@ -1,7 +1,0 @@
-name: WorldGuard
-version: '5.0'
-main: de.maleh.gpsjail.Main
-author: 'maleh'
-api-version: '1.20.1'
-website: "hey"
-prefix: "$"
